@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Employee List</title>
+		<link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript">
+      function goHome() {
+        document.location.href = "http://localhost:8080";
+      }
+      function deleteUser(userId) {
+        if (confirm("Delete this user?")) {
+          document.location.href="http://localhost:8080/delete/" + userId;
+        }
+      }
+    </script>
+	</head>
+	<body>
+		<h1>Employee List</h1>
+
+    <table border="1">
+      <thead>
+      <tr>
+        <td>ID</td>
+        <td>Last Name</td>
+        <td>First Name</td>
+        <td>Position</td>
+        <td>Department</td>
+        <td>Actions</td>
+      </tr>
+       </thead>
+       <tbody>
+    {{ range . }}
+      <tr>
+        <td>{{ .Id }} </td>
+        <td>{{ .LastName }} </td>
+        <td>{{ .FirstName }} </td>
+        <td>{{ .Position }} </td>
+        <td>{{ .Department }} </td>
+        <td>
+          <a href="http://localhost:8080/employee/{{.Id}}">Details</a>&nbsp;
+          <a href="javascript:void(0);" onclick="deleteUser({{.Id}})">Delete</a>
+        </td>
+      </tr>
+    {{end}}
+       </tbody>
+    </table>
+    <button type="button" onclick="goHome()">Home</button>
+	</body>
+</html>

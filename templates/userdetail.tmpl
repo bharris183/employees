@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Employee Detail</title>
+		<link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript">
+      function submitForm() {
+        document.userdetail.submit();
+      }
+      function goList() {
+        document.location.href = "http://localhost:8080/list";
+      }
+    </script>
+	</head>
+	<body>
+		<h1>Employee Detail</h1>
+    <form name="userdetail" method="post" action="http://localhost:8080/add">
+      <table border="1">
+        <thead>
+        <tr>
+          <td>Last Name</td>
+          <td>First Name</td>
+          <td>Position</td>
+          <td>Department</td>
+        </tr>
+         </thead>
+         <tbody>
+        {{ if ne .FirstName "" }}
+        <tr>
+          <td>{{ .LastName }} </td>
+          <td>{{ .FirstName }} </td>
+          <td>{{ .Position }} </td>
+          <td>{{ .Department }} </td>
+        </tr>
+        {{ else }}
+        <tr>
+          <td><input type="text" name="lastname" /></td>
+          <td><input type="text" name="firstname" /></td>
+          <td><input type="text" name="position" /></td>
+          <td><input type="text" name="department" /></td>
+        </tr>
+        {{ end }}
+         </tbody>
+      </table>
+      {{ if eq .FirstName "" }}
+      <button type="button" onclick="submitForm()">Submit</button>
+      {{ end }}
+      <button type="button" onclick="goList()">Employee List</button>
+    </form>
+	</body>
+</html>

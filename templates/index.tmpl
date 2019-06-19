@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Employee Management</title>
+		<link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript">
+      function listEmployees() {
+        document.location.href="http://localhost:8080/list";
+      }
+      function addEmployee() {
+        document.location.href="http://localhost:8080/employee/-1";
+      }
+    </script>
+	</head>
+	<body>
+		<h1>Employee Management</h1>
+    <h3>Actions</h3>
+    <button type="button" onclick="listEmployees()">List Employees</button>
+    <button type="button" onclick="addEmployee()">Add New Employee</button>
+	</body>
+</html>
